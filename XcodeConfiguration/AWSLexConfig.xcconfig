@@ -23,3 +23,7 @@
 // weird things as a result, breaking the build on Xcode 11. To keep using Xcode 11, we found that we can
 // use 14* instead of *. also we can just comment this line out.
 EXCLUDED_ARCHS[sdk=iphonesimulator14*] = arm64
+
+#include "Only iOS.xcconfig"
+
+OTHER_LDFLAGS = $(inherited) -ObjC '-framework' 'AVFoundation'

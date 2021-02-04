@@ -1,0 +1,13 @@
+SUPPORTED_PLATFORMS = macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator
+
+IPHONEOS_DEPLOYMENT_TARGET = 13.1
+MACOSX_DEPLOYMENT_TARGET = 10.15
+TVOS_DEPLOYMENT_TARGET = 13.1
+WATCHOS_DEPLOYMENT_TARGET = 6.2
+
+OTHER_LDFLAGS[sdk=macosx*]           = $(inherited) '-framework' 'Cocoa' '-framework' 'AppKit'
+OTHER_LDFLAGS[sdk=iphoneos*]         = $(inherited) '-framework' 'UIKit' '-framework' 'CoreTelephony'
+OTHER_LDFLAGS[sdk=iphonesimulator*]  = $(inherited) '-framework' 'UIKit' '-framework' 'CoreTelephony'
+OTHER_LDFLAGS[sdk=appletvos*]        = $(inherited) '-framework' 'UIKit'
+OTHER_LDFLAGS[sdk=watchos*]          = $(inherited) '-framework' 'WatchKit'
+
