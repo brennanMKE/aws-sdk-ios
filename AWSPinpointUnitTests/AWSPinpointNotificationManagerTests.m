@@ -14,8 +14,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "AWSPinpoint.h"
-#import "AWSPinpointNotificationManager.h"
+#import <AWSPinpoint/AWSPinpoint.h>
 
 static NSString *const UserDefaultSuiteNameAWSPinpointNotificationManagerTests = @"AWSPinpointNotificationManagerTests";
 static NSString *const AWSAttributeApplicationStateKey = @"applicationState";
@@ -45,7 +44,9 @@ static NSDictionary *InvalidPushPayload;
                  withEventSourceType:(AWSPinpointPushEventSourceType) eventSourceType;
 - (AWSPinpointEvent*)buildEventFromUserInfo:(NSDictionary *) userInfo
                          withPushActionType:(AWSPinpointPushActionType) pushActionType;
+#if TARGET_OS_IOS || TARGET_OS_TV
 - (AWSPinpointPushActionType) pushActionTypeOfApplicationState:(UIApplicationState) state;
+#endif
 - (NSDictionary*)getMetadataFromUserInfo:(NSDictionary*) userInfo;
 - (AWSPinpointPushEventSourceType)getEventSourceTypeFromUserInfo:(NSDictionary*) userInfo;
 @end
@@ -215,6 +216,7 @@ static NSDictionary *InvalidPushPayload;
     XCTAssertNil(event);
 }
 
+#if TARGET_OS_IOS || TARGET_OS_TV
 - (void)testPushActionTypeOfApplicationStateActive {
     AWSPinpointPushActionType pushactionType = [self.pinpoint.notificationManager pushActionTypeOfApplicationState:UIApplicationStateActive];
     XCTAssertEqual(pushactionType, AWSPinpointPushActionTypeReceivedForeground);
@@ -229,6 +231,7 @@ static NSDictionary *InvalidPushPayload;
     AWSPinpointPushActionType pushactionType = [self.pinpoint.notificationManager pushActionTypeOfApplicationState:UIApplicationStateInactive];
     XCTAssertEqual(pushactionType, AWSPinpointPushActionTypeOpened);
 }
+#endif
 
 - (void)testGetMetadataFromUserInfoCampaign {
     NSDictionary *metadata = [self.pinpoint.notificationManager getMetadataFromUserInfo:CampaignPushPayload];

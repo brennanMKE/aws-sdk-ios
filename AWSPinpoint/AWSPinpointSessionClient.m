@@ -64,6 +64,8 @@ typedef void(^voidBlock)(void);
 #pragma mark - Categories -
 @interface AWSPinpointSessionClient()
 
+#if TARGET_OS_IOS || TARGET_OS_TV
+
 @property (nonatomic, weak) AWSPinpointContext *context;
 
 @property (nonatomic, readwrite) AWSPinpointSession *session;
@@ -524,5 +526,7 @@ NSObject *sessionLock;
         return copy;
     }
 }
+
+#endif
 
 @end

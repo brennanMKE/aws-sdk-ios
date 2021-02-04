@@ -1997,6 +1997,7 @@ internalDictionaryToAddSubTaskTo: (NSMutableDictionary *) internalDictionaryToAd
 
 #pragma mark - UIApplicationDelegate interceptor
 
+#if TARGET_OS_IOS || TARGET_OS_TV
 + (void)interceptApplication:(UIApplication *)application
 handleEventsForBackgroundURLSession:(NSString *)identifier
            completionHandler:(void (^)(void))completionHandler {
@@ -2017,6 +2018,7 @@ handleEventsForBackgroundURLSession:(NSString *)identifier
         }
     }
 }
+#endif
 
 #pragma mark - NSURLSessionDelegate
 

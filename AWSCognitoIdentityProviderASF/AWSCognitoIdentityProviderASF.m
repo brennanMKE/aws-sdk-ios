@@ -23,7 +23,12 @@
 #ifdef DEBUG
     build = @"debug";
 #endif
-    return [AWSCognitoIdentityASF userContextData:  __IPHONE_OS_VERSION_MIN_REQUIRED
+    #if TARGET_OS_IPHONE
+    int userContextData = __IPHONE_OS_VERSION_MIN_REQUIRED;
+    #else
+    int userContextData = 0;
+    #endif
+    return [AWSCognitoIdentityASF userContextData:  userContextData
                                             build:build userPoolId: userPoolId username:username deviceId:deviceId userPoolClientId:userPoolClientId];
 }
 

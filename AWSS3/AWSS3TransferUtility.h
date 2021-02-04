@@ -13,7 +13,14 @@
 // permissions and limitations under the License.
 //
 
+#import <Foundation/Foundation.h>
+#if TARGET_OS_IOS || TARGET_OS_TV
 #import <UIKit/UIKit.h>
+#elif TARGET_OS_WATCH
+#import <WatchKit/WatchKit.h>
+#elif TARGET_OS_OSX
+#import <AppKit/AppKit.h>
+#endif
 #import <AWSCore/AWSCore.h>
 #import "AWSS3Service.h"
 #import "AWSS3TransferUtilityTasks.h"
@@ -387,6 +394,7 @@ FOUNDATION_EXPORT NSString *const AWSS3TransferUtilityURLSessionDidBecomeInvalid
  */
 + (void)removeS3TransferUtilityForKey:(NSString *)key;
 
+#if TARGET_OS_IOS || TARGET_OS_TV
 /**
  Tells `AWSS3TransferUtility` that events related to a URL session are waiting to be processed. This method needs to be called in the `- application:handleEventsForBackgroundURLSession:completionHandler:` application delegate for `AWSS3TransferUtility` to work.
 
@@ -397,7 +405,7 @@ FOUNDATION_EXPORT NSString *const AWSS3TransferUtilityURLSessionDidBecomeInvalid
 + (void)interceptApplication:(UIApplication *)application
 handleEventsForBackgroundURLSession:(NSString *)identifier
            completionHandler:(void (^)(void))completionHandler;
-
+#endif
 
 /**
  Saves the `NSData` to a temporary directory and uploads it to the configured Amazon S3 bucket in `AWSS3TransferUtilityConfiguration`.

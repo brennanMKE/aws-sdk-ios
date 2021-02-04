@@ -15,11 +15,20 @@
 
 #import "AWSService.h"
 
+#import <Foundation/Foundation.h>
+#if TARGET_OS_IOS || TARGET_OS_TV
 #import <UIKit/UIKit.h>
+#elif TARGET_OS_WATCH
+#import <WatchKit/WatchKit.h>
+#elif TARGET_OS_OSX
+#import <AppKit/AppKit.h>
+#endif
 #import "AWSSynchronizedMutableDictionary.h"
 #import "AWSURLResponseSerialization.h"
 #import "AWSCocoaLumberjack.h"
 #import "AWSCategory.h"
+
+#import "CPDevice.h"
 
 NSString *const AWSiOSSDKVersion = @"2.22.1";
 NSString *const AWSServiceErrorDomain = @"com.amazonaws.AWSServiceErrorDomain";
@@ -159,12 +168,12 @@ static NSString *const AWSServiceConfigurationUnknown = @"Unknown";
     static NSString *_userAgent = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSString *systemName = [[[UIDevice currentDevice] systemName] stringByReplacingOccurrencesOfString:@" " withString:@"-"];
-        if (!systemName) {
+        NSString *systemName = [[[CPDevice currentDevice] systemName] stringByReplacingOccurrencesOfString:@" " withString:@"-"];
+        if (systemName.length == 0) {
             systemName = AWSServiceConfigurationUnknown;
         }
-        NSString *systemVersion = [[UIDevice currentDevice] systemVersion];
-        if (!systemVersion) {
+        NSString *systemVersion = [[CPDevice currentDevice] systemVersion];
+        if (systemVersion.length == 0) {
             systemVersion = AWSServiceConfigurationUnknown;
         }
         NSString *localeIdentifier = [[NSLocale currentLocale] localeIdentifier];

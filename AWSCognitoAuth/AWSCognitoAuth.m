@@ -20,6 +20,8 @@
 #import <CommonCrypto/CommonHMAC.h>
 #import <AWSCore/AWSCore.h>
 
+#if TARGET_OS_IOS || TARGET_OS_TV
+
 NSString *const AWSCognitoAuthErrorDomain = @"com.amazon.cognito.AWSCognitoAuthErrorDomain";
 
 @interface AWSCognitoAuth()<SFSafariViewControllerDelegate, NSURLConnectionDelegate>
@@ -1389,3 +1391,5 @@ withPresentingViewController:(UIViewController *)presentingViewController {
 }
 
 @end
+
+#endif

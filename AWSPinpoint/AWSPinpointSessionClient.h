@@ -20,7 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class AWSPinpointEvent, AWSPinpointSession;
 
-
 typedef __nullable id(^AWSPinpointTimeoutBlock)(AWSTask *task);
 
 /**
@@ -58,6 +57,8 @@ typedef __nullable id(^AWSPinpointTimeoutBlock)(AWSTask *task);
  */
 @property (nonatomic, readonly) AWSPinpointSession *session;
 
+#if TARGET_OS_IOS || TARGET_OS_TV
+
 /**
  Starts the session by recording an event of type "_session.start"
  If a session is currently active then that session is stopped and a new session started.
@@ -91,6 +92,8 @@ typedef __nullable id(^AWSPinpointTimeoutBlock)(AWSTask *task);
  @return AWSTask - task.result contains the resume event.
  */
 - (AWSTask*)resumeSession;
+
+#endif
 
 @end
 

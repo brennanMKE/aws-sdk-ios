@@ -14,7 +14,13 @@
  */
 
 #import <Foundation/Foundation.h>
+#if TARGET_OS_IOS || TARGET_OS_TV
 #import <UIKit/UIKit.h>
+#elif TARGET_OS_WATCH
+#import <WatchKit/WatchKit.h>
+#elif TARGET_OS_OSX
+#import <AppKit/AppKit.h>
+#endif
 
 @class AWSPinpoint;
 
@@ -70,6 +76,7 @@ typedef NS_ENUM(NSInteger, AWSPinpointPushEventSourceType) {
  */
 - (void)interceptDidRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 
+#if TARGET_OS_IOS || TARGET_OS_TV
 /**
  Invoke this method from the `application(_:didReceiveRemoteNotification:fetchCompletionHandler:)` application delegate
  method.
@@ -86,7 +93,7 @@ typedef NS_ENUM(NSInteger, AWSPinpointPushEventSourceType) {
  */
 - (void)interceptDidReceiveRemoteNotification:(NSDictionary *)userInfo
                        fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler __attribute__((deprecated("Replaced by -interceptDidReceiveRemoteNotification:")));
-
+#endif
 /**
  For iOS 9 and below, invoke this method from the `application(_:didReceiveRemoteNotification:fetchCompletionHandler:)`
  application delegate method.
@@ -105,6 +112,7 @@ typedef NS_ENUM(NSInteger, AWSPinpointPushEventSourceType) {
  */
 - (void)interceptDidReceiveRemoteNotification:(NSDictionary *)userInfo;
 
+#if TARGET_OS_IOS || TARGET_OS_TV
 /**
  Invoke this method from the `application:didReceiveRemoteNotification:fetchCompletionHandler:shouldHandleNotificationDeepLink:`
  application delegate method.
@@ -126,7 +134,9 @@ typedef NS_ENUM(NSInteger, AWSPinpointPushEventSourceType) {
 - (void)interceptDidReceiveRemoteNotification:(NSDictionary *)userInfo
                        fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
              shouldHandleNotificationDeepLink:(BOOL) handleDeepLink __attribute__((deprecated("Replaced by -interceptDidReceiveRemoteNotification:shouldHandleNotificationDeepLink:")));
+#endif
 
+#if TARGET_OS_IOS || TARGET_OS_TV
 /**
  For iOS 9 and below, intercept the `application(_:didReceiveRemoteNotification:fetchCompletionHandler:)` application
  delegate.
@@ -149,6 +159,7 @@ typedef NS_ENUM(NSInteger, AWSPinpointPushEventSourceType) {
  */
 - (void)interceptDidReceiveRemoteNotification:(NSDictionary *)userInfo
              shouldHandleNotificationDeepLink:(BOOL) handleDeepLink;
+#endif
 
 @end
 

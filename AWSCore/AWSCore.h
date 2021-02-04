@@ -13,7 +13,14 @@
 // permissions and limitations under the License.
 //
 
+#import <Foundation/Foundation.h>
+#if TARGET_OS_IOS || TARGET_OS_TV
 #import <UIKit/UIKit.h>
+#elif TARGET_OS_WATCH
+#import <WatchKit/WatchKit.h>
+#elif TARGET_OS_OSX
+#import <AppKit/AppKit.h>
+#endif
 
 /*!
  Project version number for the AWSCore framework.

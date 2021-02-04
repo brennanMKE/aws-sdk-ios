@@ -1,8 +1,9 @@
 #import "AWSCognitoAuth.h"
 #import "AWSCognitoAuthUICKeyChainStore.h"
 
-FOUNDATION_EXPORT NSString *const AWSCognitoAuthUserAccessToken;
+#if TARGET_OS_IOS || TARGET_OS_TV
 
+FOUNDATION_EXPORT NSString *const AWSCognitoAuthUserAccessToken;
 
 @interface AWSCognitoAuth()
 @property (nonatomic, strong) AWSCognitoAuthUICKeyChainStore *keychain;
@@ -28,3 +29,5 @@ FOUNDATION_EXPORT NSString *const AWSCognitoAuthUserAccessToken;
 -(instancetype) initWithIdToken: (NSString *)idToken accessToken:(NSString *) accessToken refreshToken:(NSString *) refreshToken expirationTime:(NSDate*) expirationTime;
 -(instancetype) initWithIdToken: (NSString *)idToken accessToken:(NSString *) accessToken refreshToken:(NSString *) refreshToken expiresIn:(NSNumber*) expiresIn;
 @end
+
+#endif

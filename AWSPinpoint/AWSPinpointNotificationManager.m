@@ -13,7 +13,14 @@
  permissions and limitations under the License.
  */
 
+#import <Foundation/Foundation.h>
+#if TARGET_OS_IOS || TARGET_OS_TV
 #import <UIKit/UIKit.h>
+#elif TARGET_OS_WATCH
+#import <WatchKit/WatchKit.h>
+#elif TARGET_OS_OSX
+#import <AppKit/AppKit.h>
+#endif
 
 #import "AWSPinpointNotificationManager.h"
 #import "AWSPinpointTargetingClient.h"
@@ -67,9 +74,13 @@ NSString *const AWSPinpointJourneyKey = @"journey";
 
 + (BOOL)isNotificationEnabled {
     __block BOOL notificationsEnabled;
+    #if TARGET_OS_IOS || TARGET_OS_TV
     [self runOnMainThread:^{
         notificationsEnabled = [[UIApplication sharedApplication] isRegisteredForRemoteNotifications];
     }];
+    #else
+    notificationsEnabled = NO;
+    #endif
     
     return notificationsEnabled;
 }
@@ -92,6 +103,7 @@ NSString *const AWSPinpointJourneyKey = @"journey";
 
 #pragma mark - User action methods
 - (BOOL)interceptDidFinishLaunchingWithOptions:(nullable NSDictionary *)launchOptions {
+    #if TARGET_OS_IOS || TARGET_OS_TV
     NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
     if(notificationPayload)
     {
@@ -107,6 +119,7 @@ NSString *const AWSPinpointJourneyKey = @"journey";
         [self recordMessageOpenedEventForNotification:notificationPayload
                                        withIdentifier:nil];
     }
+#endif
     
     return YES;
 }
@@ -125,9 +138,12 @@ NSString *const AWSPinpointJourneyKey = @"journey";
 }
 
 - (void)interceptDidReceiveRemoteNotification:(NSDictionary *)userInfo {
+    #if TARGET_OS_IOS || TARGET_OS_TV
     [self interceptDidReceiveRemoteNotification:userInfo shouldHandleNotificationDeepLink:YES];
+    #endif
 }
 
+#if TARGET_OS_IOS || TARGET_OS_TV
 - (void)interceptDidReceiveRemoteNotification:(NSDictionary *)userInfo
                        fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler {
     [self interceptDidReceiveRemoteNotification:userInfo fetchCompletionHandler:handler shouldHandleNotificationDeepLink:YES];
@@ -144,9 +160,11 @@ NSString *const AWSPinpointJourneyKey = @"journey";
     [self handleNotificationReceived:[UIApplication sharedApplication] withNotification:userInfo shouldHandleNotificationDeepLink:handleDeepLink];
     //We must rely on the user calling the completion handler because if we call it ourselves as well as the user it would cause a crash due to calling it twice.
 }
+#endif
 
 #pragma mark - Handlers
 - (void)handleNotificationDeepLinkForNotification:(NSDictionary*) userInfo {
+    #if TARGET_OS_IOS || TARGET_OS_TV
     if (![AWSPinpointNotificationManager validPinpointPushForNotification:userInfo]) {
         return;
     }
@@ -160,8 +178,10 @@ NSString *const AWSPinpointJourneyKey = @"journey";
             });
         }
     }
+    #endif
 }
 
+#if TARGET_OS_IOS || TARGET_OS_TV
 - (void)handleNotificationReceived:(UIApplication *) app
                   withNotification:(NSDictionary *) userInfo
   shouldHandleNotificationDeepLink:(BOOL) shouldHandleNotificationDeepLink {
@@ -202,6 +222,7 @@ NSString *const AWSPinpointJourneyKey = @"journey";
         }
     }
 }
+#endif
 
 #pragma mark - Event recorders
 - (void)recordMessageReceivedEventForNotification:(NSDictionary *) userInfo
@@ -214,8 +235,10 @@ NSString *const AWSPinpointJourneyKey = @"journey";
         return;
     }
 
+    #if TARGET_OS_IOS || TARGET_OS_TV
     [self addApplicationStateAttributeToEvent:pushNotificationEvent
                          withApplicationState:[[UIApplication sharedApplication] applicationState]];
+    #endif
     NSDictionary *metadata = [self getMetadataFromUserInfo:userInfo];
     [self addEventSourceMetadataForEvent:pushNotificationEvent
                             withMetadata:metadata];
@@ -234,8 +257,10 @@ NSString *const AWSPinpointJourneyKey = @"journey";
     if (identifier) {
         [pushNotificationEvent addAttribute:identifier forKey:AWSAttributeActionIdentifierKey];
     }
+    #if TARGET_OS_IOS || TARGET_OS_TV
     [self addApplicationStateAttributeToEvent:pushNotificationEvent
                          withApplicationState:[[UIApplication sharedApplication] applicationState]];
+    #endif
     [self.context.analyticsClient recordEvent:pushNotificationEvent];
 }
 
@@ -265,6 +290,7 @@ NSString *const AWSPinpointJourneyKey = @"journey";
     }
 }
 
+#if TARGET_OS_IOS || TARGET_OS_TV
 - (void)addApplicationStateAttributeToEvent:(AWSPinpointEvent *) event
                        withApplicationState:(UIApplicationState) state {
     switch (state) {
@@ -287,6 +313,7 @@ NSString *const AWSPinpointJourneyKey = @"journey";
             break;
     }
 }
+#endif
 
 - (AWSPinpointEvent*)buildEventFromUserInfo:(NSDictionary *) userInfo
                          withPushActionType:(AWSPinpointPushActionType) pushActionType {
@@ -337,6 +364,7 @@ NSString *const AWSPinpointJourneyKey = @"journey";
     return eventType;
 }
 
+#if TARGET_OS_IOS || TARGET_OS_TV
 - (AWSPinpointPushActionType) pushActionTypeOfApplicationState:(UIApplicationState) state {
     AWSPinpointPushActionType pushActionType = AWSPinpointPushActionTypeUnknown;
     switch (state) {
@@ -354,6 +382,7 @@ NSString *const AWSPinpointJourneyKey = @"journey";
     }
     return pushActionType;
 }
+#endif
 
 - (AWSPinpointPushEventSourceType)getEventSourceTypeFromUserInfo:(NSDictionary*) userInfo {
     AWSPinpointPushEventSourceType eventType = AWSPinpointPushEventSourceTypeUnknown;

@@ -21,6 +21,8 @@
 #import "AWSPinpointStringUtils.h"
 #import "AWSPinpointDateUtils.h"
 
+#import "CPDevice.h"
+
 static int const MAX_NUM_OF_METRICS_AND_ATTRIBUTES = 20;
 static int const MAX_ENDPOINT_ATTRIBUTE_METRIC_KEY_LENGTH = 50;
 static int const MAX_ENDPOINT_ATTRIBUTE_VALUE_LENGTH = 100;
@@ -403,7 +405,7 @@ NSString *const AWSPinpointDefaultEndpointDemographicUnknown = @"Unknown";
 
 + (instancetype) defaultAWSPinpointEndpointProfileDemographic {
     AWSPinpointEndpointProfileDemographic *demographic = [AWSPinpointEndpointProfileDemographic new];
-    UIDevice* currentDevice = [UIDevice currentDevice];
+    CPDevice* currentDevice = [CPDevice currentDevice];
     NSString *autoUpdatingLocaleIdentifier = [[NSLocale autoupdatingCurrentLocale] localeIdentifier];
     NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     demographic.model = [currentDevice model] ? [currentDevice model] : AWSPinpointDefaultEndpointDemographicUnknown;

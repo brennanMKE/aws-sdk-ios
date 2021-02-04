@@ -1,9 +1,21 @@
 #import "AWSCognitoIdentityASF.h"
+
+#import <Foundation/Foundation.h>
+#if TARGET_OS_IOS || TARGET_OS_TV
 #import <UIKit/UIKit.h>
+#elif TARGET_OS_WATCH
+#import <WatchKit/WatchKit.h>
+#elif TARGET_OS_OSX
+#import <AppKit/AppKit.h>
+#endif
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
 #import <sys/utsname.h>
 #import <CommonCrypto/CommonHMAC.h>
+
+#import "CPDevice.h"
+#import "CPScreen.h"
+#import "CPTelephonyNetworkInfo.h"
 
 @interface AWSCognitoIdentityASF()
 + (NSString *) dashIfNil: (NSString *) str;
@@ -41,12 +53,12 @@ static NSString *const AWSCognitoIdentitySimOperator = @"SimOperator"; //N/A
 static NSString *const AWSCognitoIdentityASFVersion= @"IOS20171114";
 
 + (NSString *) userContextData: (int) minTarget build: (NSString *) build userPoolId: (NSString*) userPoolId username: (NSString *) username deviceId: (NSString * _Nullable) deviceId userPoolClientId: (NSString *) userPoolClientId {
-    UIDevice *device = [UIDevice currentDevice];
+    CPDevice *device = [CPDevice currentDevice];
     NSBundle *bundle = [NSBundle mainBundle];
     NSString *bundleIdentifier = [bundle bundleIdentifier];
     NSString *buildVersion = [bundle objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey];
     NSString *bundleVersion = [bundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-    CGRect bounds = [[UIScreen mainScreen] nativeBounds];
+    CGRect bounds = [[CPScreen mainScreen] nativeBounds];
     CGFloat screenWidth = bounds.size.width;
     CGFloat screenHeight = bounds.size.height;
     
@@ -59,12 +71,7 @@ static NSString *const AWSCognitoIdentityASFVersion= @"IOS20171114";
     NSString *minuteOffset = [localTimeZoneOffset substringFromIndex:[localTimeZoneOffset length] - 2];
     NSString *timezoneOffset = [NSString stringWithFormat:@"%@:%@",hourOffset,minuteOffset];
     NSString * locale = [[NSLocale preferredLanguages] objectAtIndex:0];
-    CTTelephonyNetworkInfo *networkInfo = [[CTTelephonyNetworkInfo alloc] init];
-    NSString * networkType = [networkInfo currentRadioAccessTechnology];
-    CTCarrier *cellularProvider = [networkInfo subscriberCellularProvider];
-    NSString *countryCode = cellularProvider.isoCountryCode;
-    BOOL hasSimCard = countryCode != nil;
-    NSString *carrier = [cellularProvider carrierName];
+    CPTelephonyNetworkInfo *networkInfo = [[CPTelephonyNetworkInfo alloc] init];
     NSString *fingerprint = [NSString stringWithFormat:@"Apple/%@/%@/-:%@/-/-:-/%@",
                                                         [AWSCognitoIdentityASF dashIfNil:[device model]],
                                                         [AWSCognitoIdentityASF dashIfNil:[AWSCognitoIdentityASF deviceName]],
@@ -74,16 +81,19 @@ static NSString *const AWSCognitoIdentityASFVersion= @"IOS20171114";
     
     NSString * minTargetString = [NSString stringWithFormat:@"%i", minTarget];
     
-    
-    
     NSMutableDictionary * contextData= [NSMutableDictionary new];
     [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityAppName value:bundleIdentifier];
     [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityAppTargetSDK value: minTargetString];
     [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityAppVersion value:[NSString stringWithFormat:@"%@-%@",bundleVersion,buildVersion]];
     [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityDeviceName value:[device name]];
     [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityPhoneType value:[AWSCognitoIdentityASF deviceName]];
-    [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityThirdPartyDeviceId value:[device identifierForVendor].UUIDString];
-    [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityDeviceId value: ((deviceId == nil)? [device identifierForVendor].UUIDString : deviceId)]; //TODO
+    #if TARGET_OS_IPHONE
+    NSString *vendor = device.identifierForVendor.UUIDString;
+    #else
+    NSString *vendor = @"";
+    #endif
+    [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityThirdPartyDeviceId value:vendor];
+    [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityDeviceId value: ((deviceId == nil)? vendor : deviceId)]; //TODO
     [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityReleaseVersion value: [device systemVersion]];
     [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityPlatform value: [device systemName]];
     [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityBuildType value: build];
@@ -91,9 +101,9 @@ static NSString *const AWSCognitoIdentityASFVersion= @"IOS20171114";
     [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityDeviceHeight value: [NSString stringWithFormat:@"%.0f",screenHeight]];
     [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityDeviceWidth value: [NSString stringWithFormat:@"%.0f",screenWidth]];
     [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityDeviceLanguage value: locale];
-    [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityCarrier value: carrier];
-    [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityNetworkType value: networkType];
-    [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityHasSimCard value:hasSimCard?@"true":@"false"];
+    [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityCarrier value: networkInfo.carrier];
+    [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityNetworkType value: networkInfo.networkType];
+    [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityHasSimCard value:networkInfo.hasSimCard ? @"true" : @"false"];
     
     [AWSCognitoIdentityASF addIfNotNil: contextData key:AWSCognitoIdentityDeviceFingerprint value:fingerprint];
     

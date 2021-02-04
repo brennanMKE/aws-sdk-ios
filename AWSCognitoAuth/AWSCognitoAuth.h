@@ -14,10 +14,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#if TARGET_OS_IOS || TARGET_OS_TV
 #import <UIKit/UIKit.h>
+#elif TARGET_OS_WATCH
+#import <WatchKit/WatchKit.h>
+#elif TARGET_OS_OSX
+#import <AppKit/AppKit.h>
+#endif
 #import <AuthenticationServices/AuthenticationServices.h>
 
 NS_ASSUME_NONNULL_BEGIN
+
+#if TARGET_OS_IOS || TARGET_OS_TV
 
 //! SDK version for AWSCognitoAuth
 FOUNDATION_EXPORT NSString *const AWSCognitoAuthSDKVersion;
@@ -115,6 +123,7 @@ typedef void (^AWSCognitoAuthSignOutBlock)(NSError * _Nullable error);
  */
 - (void)getSession:(UIViewController *) vc completion: (nullable AWSCognitoAuthGetSessionBlock) completion;
 
+
 /**
  Get a session with id, access and refresh tokens, use delegate to get view controller.
  @param completion completion block to invoke on completion
@@ -147,14 +156,12 @@ typedef void (^AWSCognitoAuthSignOutBlock)(NSError * _Nullable error);
  */
 -(void) signOutLocallyAndClearLastKnownUser;
 
-
 /**
  Method to handle app redirect.  Call from AppDelegate application:openURL:options
  */
 - (BOOL)application:(UIApplication *)app
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
-
 
 @end
 
@@ -338,10 +345,12 @@ typedef void (^AWSCognitoAuthSignOutBlock)(NSError * _Nullable error);
  For obtaining current view controller to interact with the end user
  */
 @protocol AWSCognitoAuthDelegate <NSObject>
+
 /**
  Get view controller to display user authentication on top of.
  */
 - (UIViewController *) getViewController;
+
 
 @optional
 /**
@@ -349,7 +358,7 @@ typedef void (^AWSCognitoAuthSignOutBlock)(NSError * _Nullable error);
  */
 - (BOOL) shouldLaunchSignInVCIfRefreshTokenIsExpired;
 @end
-
+#endif
 
 NS_ASSUME_NONNULL_END
 

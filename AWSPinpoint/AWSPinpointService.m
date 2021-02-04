@@ -151,10 +151,12 @@ static AWSSynchronizedMutableDictionary *_pinpointForAppNamespace = nil;
         if(configuration.completionBlock) {
             configuration.completionBlock(self);
         }
-        
+
+        #if TARGET_OS_IOS || TARGET_OS_TV
         if (configuration.enableAutoSessionRecording) {
             [_pinpointContext.sessionClient startSession];
         }
+        #endif
         
         AWSDDLogInfo(@"Pinpoint SDK Initialization successfully completed.");
     }
