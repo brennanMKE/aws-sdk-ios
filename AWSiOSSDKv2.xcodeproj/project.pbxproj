@@ -175,6 +175,30 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0317830725CB4EF400E36364 /* CPDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0317830125CB4EF300E36364 /* CPDevice.m */; };
+		0317830825CB4EF400E36364 /* CPDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0317830125CB4EF300E36364 /* CPDevice.m */; };
+		0317830925CB4EF400E36364 /* CPScreen.h in Headers */ = {isa = PBXBuildFile; fileRef = 0317830225CB4EF300E36364 /* CPScreen.h */; };
+		0317830A25CB4EF400E36364 /* CPScreen.h in Headers */ = {isa = PBXBuildFile; fileRef = 0317830225CB4EF300E36364 /* CPScreen.h */; };
+		0317830B25CB4EF400E36364 /* CPDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 0317830325CB4EF400E36364 /* CPDevice.h */; };
+		0317830C25CB4EF400E36364 /* CPDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 0317830325CB4EF400E36364 /* CPDevice.h */; };
+		0317830D25CB4EF400E36364 /* CPScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0317830425CB4EF400E36364 /* CPScreen.m */; };
+		0317830E25CB4EF400E36364 /* CPScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0317830425CB4EF400E36364 /* CPScreen.m */; };
+		0317830F25CB4EF400E36364 /* CPTelephonyNetworkInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0317830525CB4EF400E36364 /* CPTelephonyNetworkInfo.h */; };
+		0317831025CB4EF400E36364 /* CPTelephonyNetworkInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0317830525CB4EF400E36364 /* CPTelephonyNetworkInfo.h */; };
+		0317831125CB4EF400E36364 /* CPTelephonyNetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0317830625CB4EF400E36364 /* CPTelephonyNetworkInfo.m */; };
+		0317831225CB4EF400E36364 /* CPTelephonyNetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0317830625CB4EF400E36364 /* CPTelephonyNetworkInfo.m */; };
+		031783F525CB52EF00E36364 /* CPScreen.h in Headers */ = {isa = PBXBuildFile; fileRef = 0317830225CB4EF300E36364 /* CPScreen.h */; };
+		031783F625CB52EF00E36364 /* CPDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 0317830325CB4EF400E36364 /* CPDevice.h */; };
+		031783F725CB52EF00E36364 /* CPTelephonyNetworkInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0317830525CB4EF400E36364 /* CPTelephonyNetworkInfo.h */; };
+		0317846925CB52F600E36364 /* CPDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0317830125CB4EF300E36364 /* CPDevice.m */; };
+		0317846A25CB52F600E36364 /* CPScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0317830425CB4EF400E36364 /* CPScreen.m */; };
+		0317846B25CB52F600E36364 /* CPTelephonyNetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0317830625CB4EF400E36364 /* CPTelephonyNetworkInfo.m */; };
+		031784DD25CB545E00E36364 /* CPDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 0317830325CB4EF400E36364 /* CPDevice.h */; };
+		031784DE25CB545E00E36364 /* CPTelephonyNetworkInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0317830525CB4EF400E36364 /* CPTelephonyNetworkInfo.h */; };
+		031784DF25CB545E00E36364 /* CPScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0317830425CB4EF400E36364 /* CPScreen.m */; };
+		031784E025CB545E00E36364 /* CPDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0317830125CB4EF300E36364 /* CPDevice.m */; };
+		031784E125CB545E00E36364 /* CPTelephonyNetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0317830625CB4EF400E36364 /* CPTelephonyNetworkInfo.m */; };
+		031784E225CB545E00E36364 /* CPScreen.h in Headers */ = {isa = PBXBuildFile; fileRef = 0317830225CB4EF300E36364 /* CPScreen.h */; };
 		173641DE1ECBBABC00512239 /* AWSLambdaRequestRetryHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 173641DC1ECBBABC00512239 /* AWSLambdaRequestRetryHandler.h */; };
 		173641DF1ECBBABC00512239 /* AWSLambdaRequestRetryHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 173641DD1ECBBABC00512239 /* AWSLambdaRequestRetryHandler.m */; };
 		174A59F01D89D7DB008C7D52 /* AWSLambdaMicroserviceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 174A59EF1D89D7DB008C7D52 /* AWSLambdaMicroserviceClient.m */; };
@@ -2562,6 +2586,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0317830125CB4EF300E36364 /* CPDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPDevice.m; sourceTree = "<group>"; };
+		0317830225CB4EF300E36364 /* CPScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPScreen.h; sourceTree = "<group>"; };
+		0317830325CB4EF400E36364 /* CPDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPDevice.h; sourceTree = "<group>"; };
+		0317830425CB4EF400E36364 /* CPScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPScreen.m; sourceTree = "<group>"; };
+		0317830525CB4EF400E36364 /* CPTelephonyNetworkInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTelephonyNetworkInfo.h; sourceTree = "<group>"; };
+		0317830625CB4EF400E36364 /* CPTelephonyNetworkInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPTelephonyNetworkInfo.m; sourceTree = "<group>"; };
+		0317855425CB660100E36364 /* Only iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Only iOS.xcconfig"; sourceTree = "<group>"; };
+		0317871B25CB9F8200E36364 /* Not Mac.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Not Mac.xcconfig"; sourceTree = "<group>"; };
+		03E1B58925C8F77700590EA9 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
+		03F7A14725CA289900A2CA65 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		173641DC1ECBBABC00512239 /* AWSLambdaRequestRetryHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSLambdaRequestRetryHandler.h; sourceTree = "<group>"; };
 		173641DD1ECBBABC00512239 /* AWSLambdaRequestRetryHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSLambdaRequestRetryHandler.m; sourceTree = "<group>"; };
 		174A59EE1D89D7DB008C7D52 /* AWSLambdaMicroserviceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSLambdaMicroserviceClient.h; sourceTree = "<group>"; };
@@ -4805,6 +4839,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03F7A14625CA1F0600A2CA65 /* Cross Platform */ = {
+			isa = PBXGroup;
+			children = (
+				03F7A14725CA289900A2CA65 /* README.md */,
+				0317830325CB4EF400E36364 /* CPDevice.h */,
+				0317830125CB4EF300E36364 /* CPDevice.m */,
+				0317830225CB4EF300E36364 /* CPScreen.h */,
+				0317830425CB4EF400E36364 /* CPScreen.m */,
+				0317830525CB4EF400E36364 /* CPTelephonyNetworkInfo.h */,
+				0317830625CB4EF400E36364 /* CPTelephonyNetworkInfo.m */,
+			);
+			path = "Cross Platform";
+			sourceTree = "<group>";
+		};
 		1778554420F9A72800D083BB /* AWSKinesisVideo */ = {
 			isa = PBXGroup;
 			children = (
@@ -5530,6 +5578,9 @@
 			isa = PBXGroup;
 			children = (
 				B4B8C4BE25ACC10E0054E723 /* AWSLexConfig.xcconfig */,
+				03E1B58925C8F77700590EA9 /* Base.xcconfig */,
+				0317855425CB660100E36364 /* Only iOS.xcconfig */,
+				0317871B25CB9F8200E36364 /* Not Mac.xcconfig */,
 			);
 			path = XcodeConfiguration;
 			sourceTree = "<group>";
@@ -5643,6 +5694,7 @@
 		CE0D41531C6A66A9006B91B5 = {
 			isa = PBXGroup;
 			children = (
+				03F7A14625CA1F0600A2CA65 /* Cross Platform */,
 				CE6983C11CEE52D40092640F /* AWSAllTests */,
 				181154771E201403008F184C /* AWSAllTestsHost */,
 				FAD9DD20245CD135003F84D0 /* AWSTestResources */,
@@ -7416,7 +7468,9 @@
 				18798FD91DEF9F2B00BC419B /* AWSPinpointConfiguration.h in Headers */,
 				18798FCF1DEF9F2B00BC419B /* AWSPinpoint.h in Headers */,
 				18798FEE1DEF9F2B00BC419B /* AWSPinpointTargetingClient.h in Headers */,
+				031784DE25CB545E00E36364 /* CPTelephonyNetworkInfo.h in Headers */,
 				18798FE51DEF9F2B00BC419B /* AWSPinpointSessionClient.h in Headers */,
+				031784E225CB545E00E36364 /* CPScreen.h in Headers */,
 				18798FDF1DEF9F2B00BC419B /* AWSPinpointEventRecorder.h in Headers */,
 				18798FE11DEF9F2B00BC419B /* AWSPinpointNotificationManager.h in Headers */,
 				18798FE31DEF9F2B00BC419B /* AWSPinpointService.h in Headers */,
@@ -7424,6 +7478,7 @@
 				18798FE81DEF9F2B00BC419B /* AWSPinpointTargetingModel.h in Headers */,
 				18798FEA1DEF9F2B00BC419B /* AWSPinpointTargetingResources.h in Headers */,
 				18798FE71DEF9F2B00BC419B /* AWSPinpointTargeting.h in Headers */,
+				031784DD25CB545E00E36364 /* CPDevice.h in Headers */,
 				18798FEC1DEF9F2B00BC419B /* AWSPinpointTargetingService.h in Headers */,
 				18798FF51DEF9F2B00BC419B /* AWSPinpointStringUtils.h in Headers */,
 				18798FF11DEF9F2B00BC419B /* AWSPinpointContext.h in Headers */,
@@ -7560,6 +7615,7 @@
 				CE0D42441C6A673E006B91B5 /* AWSFMDatabase.h in Headers */,
 				CE0D42511C6A673E006B91B5 /* AWSGZIP.h in Headers */,
 				CE0D42921C6A673E006B91B5 /* AWSSTSService.h in Headers */,
+				0317830B25CB4EF400E36364 /* CPDevice.h in Headers */,
 				CE0D42801C6A673E006B91B5 /* AWSURLRequestRetryHandler.h in Headers */,
 				CE0D424D1C6A673E006B91B5 /* AWSFMResultSet.h in Headers */,
 				CE0D423B1C6A673E006B91B5 /* AWSCognitoIdentityResources.h in Headers */,
@@ -7604,6 +7660,7 @@
 				FA5D34FC250C0D77007AA030 /* AWSNSCodingUtilities.h in Headers */,
 				CE0D42291C6A673E006B91B5 /* AWSBolts.h in Headers */,
 				CE0D42561C6A673E006B91B5 /* AWSMTLJSONAdapter.h in Headers */,
+				0317830925CB4EF400E36364 /* CPScreen.h in Headers */,
 				184F43121E930A2D004F3FE2 /* AWSDDASLLogCapture.h in Headers */,
 				1868C0261E207E33001CDA82 /* AWSGeneric.h in Headers */,
 				EFE40B7C1CC5BDCA0045D710 /* AWSInfo.h in Headers */,
@@ -7616,6 +7673,7 @@
 				CE0D42341C6A673E006B91B5 /* AWSTask.h in Headers */,
 				184F43171E930A2D004F3FE2 /* AWSDDFileLogger.h in Headers */,
 				184F43311E9336BD004F3FE2 /* AWSDDLegacyMacros.h in Headers */,
+				0317830F25CB4EF400E36364 /* CPTelephonyNetworkInfo.h in Headers */,
 				184F432A1E930A34004F3FE2 /* AWSDDMultiFormatter.h in Headers */,
 				184F431C1E930A2D004F3FE2 /* AWSDDLog+LOGV.h in Headers */,
 				184F43281E930A34004F3FE2 /* AWSDDDispatchQueueLogFormatter.h in Headers */,
@@ -7880,6 +7938,9 @@
 			files = (
 				EFDE85E91FC5E7F000D281A2 /* AWSCognitoIdentityProviderASF.h in Headers */,
 				EFDE86021FC6591900D281A2 /* AWSCognitoIdentityASF.h in Headers */,
+				031783F725CB52EF00E36364 /* CPTelephonyNetworkInfo.h in Headers */,
+				031783F525CB52EF00E36364 /* CPScreen.h in Headers */,
+				031783F625CB52EF00E36364 /* CPDevice.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7888,8 +7949,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF2211881ED75A0400F432F7 /* AWSCognitoAuthUICKeyChainStore.h in Headers */,
+				0317831025CB4EF400E36364 /* CPTelephonyNetworkInfo.h in Headers */,
 				EF0FEB411ED2696700D763BC /* AWSCognitoAuth.h in Headers */,
 				EF0FEB421ED2698300D763BC /* AWSCognitoAuth_Internal.h in Headers */,
+				0317830C25CB4EF400E36364 /* CPDevice.h in Headers */,
+				0317830A25CB4EF400E36364 /* CPScreen.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11449,11 +11513,14 @@
 				18798FDE1DEF9F2B00BC419B /* AWSPinpointEvent.m in Sources */,
 				18798FED1DEF9F2B00BC419B /* AWSPinpointTargetingService.m in Sources */,
 				18798FF41DEF9F2B00BC419B /* AWSPinpointDateUtils.m in Sources */,
+				031784E125CB545E00E36364 /* CPTelephonyNetworkInfo.m in Sources */,
+				031784DF25CB545E00E36364 /* CPScreen.m in Sources */,
 				18798FEB1DEF9F2B00BC419B /* AWSPinpointTargetingResources.m in Sources */,
 				18798FE41DEF9F2B00BC419B /* AWSPinpointService.m in Sources */,
 				18798FE01DEF9F2B00BC419B /* AWSPinpointEventRecorder.m in Sources */,
 				18798FDA1DEF9F2B00BC419B /* AWSPinpointConfiguration.m in Sources */,
 				18798FDC1DEF9F2B00BC419B /* AWSPinpointEndpointProfile.m in Sources */,
+				031784E025CB545E00E36364 /* CPDevice.m in Sources */,
 				18798FF61DEF9F2B00BC419B /* AWSPinpointStringUtils.m in Sources */,
 				18798FD81DEF9F2B00BC419B /* AWSPinpointAnalyticsClient.m in Sources */,
 			);
@@ -11851,6 +11918,7 @@
 				2171EB6A254C721E00FAB22F /* AWSTimestampSerialization.m in Sources */,
 				CE0D42491C6A673E006B91B5 /* AWSFMDatabasePool.m in Sources */,
 				CE0D424E1C6A673E006B91B5 /* AWSFMResultSet.m in Sources */,
+				0317830D25CB4EF400E36364 /* CPScreen.m in Sources */,
 				CE0D426E1C6A673E006B91B5 /* NSError+AWSMTLModelException.m in Sources */,
 				CE0D42851C6A673E006B91B5 /* AWSURLResponseSerialization.m in Sources */,
 				CE0D429E1C6A673E006B91B5 /* AWSUICKeyChainStore.m in Sources */,
@@ -11860,8 +11928,10 @@
 				CE0D42281C6A673E006B91B5 /* AWSSignature.m in Sources */,
 				FA5D34FD250C0D77007AA030 /* AWSNSCodingUtilities.m in Sources */,
 				CE0D42701C6A673E006B91B5 /* NSObject+AWSMTLComparisonAdditions.m in Sources */,
+				0317831125CB4EF400E36364 /* CPTelephonyNetworkInfo.m in Sources */,
 				CE0D42241C6A673E006B91B5 /* AWSCredentialsProvider.m in Sources */,
 				184F431B1E930A2D004F3FE2 /* AWSDDLog.m in Sources */,
+				0317830725CB4EF400E36364 /* CPDevice.m in Sources */,
 				CE0D42721C6A673E006B91B5 /* NSValueTransformer+AWSMTLInversionAdditions.m in Sources */,
 				CE0D424B1C6A673E006B91B5 /* AWSFMDatabaseQueue.m in Sources */,
 				CE0D42611C6A673E006B91B5 /* AWSMTLValueTransformer.m in Sources */,
@@ -12485,8 +12555,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0317846A25CB52F600E36364 /* CPScreen.m in Sources */,
 				FA5DFE5821FB8E4700C554E7 /* AWSCognitoIdentityASF.m in Sources */,
+				0317846B25CB52F600E36364 /* CPTelephonyNetworkInfo.m in Sources */,
 				EFDE85FE1FC6535E00D281A2 /* AWSCognitoIdentityProviderASF.m in Sources */,
+				0317846925CB52F600E36364 /* CPDevice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12494,8 +12567,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0317830E25CB4EF400E36364 /* CPScreen.m in Sources */,
 				EF2211891ED75A0400F432F7 /* AWSCognitoAuthUICKeyChainStore.m in Sources */,
+				0317831225CB4EF400E36364 /* CPTelephonyNetworkInfo.m in Sources */,
 				EF0FEB3B1ED218E300D763BC /* AWSCognitoAuth.m in Sources */,
+				0317830825CB4EF400E36364 /* CPDevice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14074,7 +14150,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/AWSLex/Bluefront",
 				);
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.sdk.ios.AWSLex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -14100,7 +14175,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/AWSLex/Bluefront",
 				);
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.sdk.ios.AWSLex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -15700,6 +15774,7 @@
 		};
 		CE0D41631C6A66AA006B91B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03E1B58925C8F77700590EA9 /* Base.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BITCODE_GENERATION_MODE = bitcode;
@@ -15762,6 +15837,7 @@
 		};
 		CE0D41641C6A66AA006B91B5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03E1B58925C8F77700590EA9 /* Base.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BITCODE_GENERATION_MODE = bitcode;
